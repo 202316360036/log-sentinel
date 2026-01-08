@@ -70,4 +70,5 @@ Este repositório é um template para projetos Python utilizando o [PDM](https:/
 - **``src/``**: Contém o código-fonte do projeto.
 - **``tests/``**: Contém os testes do projeto.
 - **``pyproject.toml``**: Arquivo de configuração do projeto, incluindo dependências e metadados.
+
 Para mais informações sobre o PDM, consulte a [documentação oficial](https://pdm.fming.dev/).

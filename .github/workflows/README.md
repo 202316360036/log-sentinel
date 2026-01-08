@@ -8,6 +8,7 @@ O [GitHub Actions](https://docs.github.com/pt/actions) permite criar pipelines d
 ## Como funciona
 - Os arquivos de workflow são escritos em YAML e ficam na pasta `.github/workflows/`.
 - Cada arquivo define um ou mais jobs (tarefas) que são executados em eventos como push, pull request ou tags.
+- Caso haja alguma falha em um job, o GitHub Actions para o workflow e notifica os colaboradores do repositório por email.
 
 ## Exemplo de pipeline para Python com PDM
 ```yaml
@@ -35,7 +36,10 @@ jobs:
 ```
 
 ## Dicas
-- Crie arquivos como `ci.yml`, `test.yml` ou `deploy.yml` para diferentes etapas.
+- Crie arquivos como `test.yml`, `ci.yml`, ou `deploy.yml` para diferentes etapas.
+  - O arquivo `test.yml` roda os testes automatizados e de cobertura com pytest (já incluído neste template).
+  - O arquivo `ci.yml` pode ser usado para builds e verificações adicionais.
+  - O arquivo `deploy.yml` pode ser configurado para publicar pacotes ou fazer deploy automático.
 - Consulte a [documentação oficial](https://docs.github.com/pt/actions) para exemplos e boas práticas.
 - Use secrets do GitHub para armazenar tokens e senhas de deploy.
 
