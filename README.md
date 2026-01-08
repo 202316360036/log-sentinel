@@ -5,7 +5,7 @@ Este repositório é um template para projetos Python utilizando o [PDM](https:/
 ## Como usar este template
 
 1. **Copiar o template**:
-   - No GitHub, clique no botão "Use this template" (ou "Usar este template") na página do repositório.
+   - No GitHub, clique no botão ``Use this template`` (ou ``Usar este template``) na página do repositório.
    - Siga as instruções para criar um novo repositório baseado neste template.
 
 2. **Clonar o repositório**:
@@ -34,9 +34,9 @@ Este repositório é um template para projetos Python utilizando o [PDM](https:/
      ```bash
      python -m pdm add nome-da-dependencia
      ```
-   - Para adicionar dependências de desenvolvimento:
+   - Para adicionar dependências de desenvolvimento (instaladas apenas no ambiente de desenvolvimento - nunca em produção), utilize:
      ```bash
-     python -m pdm add --dev nome-da-dependencia
+     python -m pdm add -d nome-da-dependencia
      ```
 
 ## Executar o projeto
@@ -44,7 +44,7 @@ Este repositório é um template para projetos Python utilizando o [PDM](https:/
 1. **Rodar o projeto**:
    - Após instalar as dependências, você pode executar o projeto diretamente usando:
      ```bash
-     pdm run python -m python_pdm_template
+     python -m pdm run python -m python_pdm_template
      ```
 
 ## Build do projeto
@@ -61,6 +61,7 @@ Este repositório é um template para projetos Python utilizando o [PDM](https:/
      ```bash
      python -m pdm publish
      ```
+  - Certifique-se de ter uma conta no PyPI antes de publicar.
 
 ## Estrutura do projeto
 
