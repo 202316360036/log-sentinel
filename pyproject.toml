@@ -1,0 +1,76 @@
+[project]
+name = "python_pdm_template"
+version = "0.1.0"
+description = "Template for Python PDM-based projects"
+authors = [{ name = "None", email = "none@domain.com" }]
+dependencies = ["pydantic>=2.12.5"]
+requires-python = ">=3.14"
+readme = "README.md"
+license-files = ["LICEN[CS]E*", "README.md"]
+classifiers = ["Programming Language :: Python :: 3"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[project.scripts]
+# CLI command =  module:entry_point
+python_pdm_template = "python_pdm_template.__main__:main"  
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.build]
+package-dir = "src"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cache-clear --ff --cov=src --cov-report=html --cov-report=term --cov-report=xml"
+
+[tool.pyright]
+# Specify the language server (Pylance should be set by default if using Pyright)
+typeCheckingMode = "basic"      # Type checking mode (options: "off", "basic", "strict")
+extraPaths = ["src"]            # Extra search path
+indexing = true                 # Enable indexing for better suggestions
+useLibraryCodeForTypes = true   # Use type stubs from libraries for better error detection
+
+# Report all types of issues including circular imports AND
+reportImportCycles = true 
+# Duplicate imports, deprecated features, unused functions and classes
+reportDuplicateImport = "warning"
+reportDeprecated = "warning"
+reportUnusedFunction = "warning"
+reportUnusedClass = "warning"
+
+# INHERITANCE ISSUES
+reportMissingSuperCall = "error"           # missing super() call in a constructor
+reportInconsistentConstructor = "error"    # inconsistent constructor signatures
+reportIncompatibleMethodOverride = "error" # incompatible method overrides (base class)
+reportOverlappingOverload = "error"        # overlapping overloads
+
+# TYPE ISSUES
+reportIncompleteStub = "error" # Incomplete stub files
+reportInvalidStubStatement = "error" # Invalid statements in stub files
+reportPropertyTypeMismatch = "error" # Property type mismatch
+
+# Include files for analysis
+include = [
+    "src",
+    "tests",
+]
+
+# Exclude files from analysis
+exclude = [
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+    ".mypy_cache",
+    ".pytest_cache",
+]

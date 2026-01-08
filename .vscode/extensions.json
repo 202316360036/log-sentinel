@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "ms-python.autopep8",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "SonarSource.sonarlint-vscode",
+        "jebbs.plantuml",
+        "tamasfe.even-better-toml",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-preview-github-styles",
+    ]
+}
