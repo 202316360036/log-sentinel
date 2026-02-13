@@ -58,7 +58,7 @@ Consulte a [documentação oficial](https://docs.github.com/pt/actions) para exe
         - name: Rodar ruff
           run: python -m pdm run ruff check src/
   ```
-3. O workflow `ci.yaml` deve rodar quando houver um ``git push`` no repositório ou quando você for na aba ``Actions -> Workflow de CI`` e clicar no botao ``Executar``. 
+3. O workflow `ci.yaml` deve rodar quando houver um ``git push`` no repositório ou quando você for na aba ``Actions -> Integracao Continua`` e clicar no botao ``Executar``. 
    - Se quiser, voce pode configurar o workflow para rodar com outros eventos, alem do ``push`` (ex: tags, releases, etc). 
    - Para isso, basta alterar a seção `on` do arquivo `ci.yaml`, conforme descrito na [documentação oficial do GitHub Actions](https://docs.github.com/pt/actions/using-workflows/events-that-trigger-workflows).
 4. Teste o workflow fazendo um `git push`. 

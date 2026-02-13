@@ -1,5 +1,5 @@
-# Workflow de CI/CD para rodar testes automatizados com PDM e pytest
-name: Test CI / CD
+# Workflow para rodar testes automatizados com  pytest
+name: Testes com Pytest
 
 # Dispara o workflow em push ou execução manual
 on: [push, workflow_dispatch]

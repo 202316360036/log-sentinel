@@ -1,5 +1,5 @@
 # Workflow de CI para rodar linters e verificações de qualidade de código
-name: Workflow de CI
+name: Integracao Continua
 
 # Dispara o workflow em push ou execução manual.
 #     Veja https://docs.github.com/pt/actions/using-workflows/events-that-trigger-workflows para mais opções de eventos
