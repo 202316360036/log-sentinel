@@ -44,31 +44,21 @@ Este repositório é um template para projetos Python utilizando o [PDM](https:/
 1. **Rodar o projeto**:
    - Após instalar as dependências, você pode executar o projeto diretamente usando:
      ```bash
-     python -m pdm run python -m python_pdm_template
+     python -m pdm run python src/python_pdm_template/__main__.py
      ```
 
-## Build do projeto
+O PDM nao apenas controla dependencias e executa o projeto, ele também pode compilar o projeto Python em arquivos `.WHL` e publicá-los no repositório oficial de pacotes do Python ([PyPi](https://pypi.org/)).
 
-1. **Construir o projeto**:
-   - Para criar um pacote instalável do projeto, utilize o comando:
-     ```bash
-     python -m pdm build
-     ```
-   - O pacote `.whl` será gerado na pasta `dist/`.
-
-2. **Publicar o pacote (opcional)**:
-   - Para publicar o pacote no PyPI (para que qualquer pessoa possa utilizar seu programa), use o comando:
-     ```bash
-     python -m pdm publish
-     ```
-  - Certifique-se de ter uma conta no PyPI antes de publicar.
+Para mais informações sobre as essas e outras funcionalidades disponíveis no PDM, consulte a [documentação oficial](https://pdm.fming.dev/).
 
 ## Estrutura do projeto
 
-- **``.github/``**: Configurações do GitHub, como workflows de CI/CD.
-- **``.vscode/``**: Configurações do Visual Studio Code.
-- **``src/``**: Contém o código-fonte do projeto.
-- **``tests/``**: Contém os testes do projeto.
-- **``pyproject.toml``**: Arquivo de configuração do projeto, incluindo dependências e metadados.
+- [**``.github/workflows/``**](.github/workflows): Configurações do GitHub Workflows para automacao de CI/CD (Integração Contínua e Entrega Contínua).
+- [**``.vscode/``**](.vscode): Configurações do Visual Studio Code.
+- [**``src/``**](src/python_pdm_template/): Contém o código-fonte do projeto.
+- [**``tests/``**](tests): Contém os testes do projeto.
+- [**``pyproject.toml``**](pyproject.md): Arquivo de configuração do projeto, incluindo dependências e metadados.
 
-Para mais informações sobre o PDM, consulte a [documentação oficial](https://pdm.fming.dev/).
+Cada pasta ou arquivo acima tem um ``README.md`` explicando sua finalidade, como funciona, e como usar cada uma delas. **Clique nos links acima e leia com atenção cada um dos READMEs para entender melhor o projeto.**
+- Em cada um dos links acima **há tarefas para você realizar**, para praticar o que foi explicado no README. 
+- As tarefas poderão ser **utilizadas para fins de avaliação na disciplina.** Assim, realize todas as tarefas propostas e envie suas respostas no nosso Google Classroom.

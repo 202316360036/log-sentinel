@@ -1,3 +1,14 @@
+# este arquivo descreve arquivos python que precisam ser ignorados pelo comando
+#    git add
+# 
+# Ou seja, ele ignora arquivos que nao devem fazer parte do repositorio do GitHub)
+#    Ex:
+#       arquivos python compilados (.pyc, .pyd, .pyo)
+#       pastas que contem arquivos python compilados (__pycache__/)
+#       arquivos C compilados (.so)
+#       pasta de build/ (usada para criar programas python compilados)
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -44,7 +55,7 @@ htmlcov/
 .coverage.*
 .cache
 nosetests.xml
-coverage.xml
+# coverage.xml
 *.cover
 *.py.cover
 .hypothesis/

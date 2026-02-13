@@ -1,7 +1,7 @@
 {
+    // TODO: Adicionar configuracoes do Sonarcloud aqui 
+    // (VEJA README.MD DA PASTA .vscode PARA MAIS DETALHES)
     "git.ignoreLimitWarning": false,
-    "python.languageServer": "Pylance",
-    "python.analysis.diagnosticMode": "workspace",
     "python.defaultInterpreterPath": ".venv\\Scripts\\python.exe",
     "python.testing.pytestArgs": [
         "tests"
@@ -9,8 +9,12 @@
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
     "[python]": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.formatOnSave": true, // formata codigo python ao salvar
+        "editor.defaultFormatter": "ms-python.autopep8", // formatador python escolhido
+        "editor.codeActionsOnSave": {
+            "source.unusedImports": "explicit", // remove imports nao usados ao salvar documento
+            "source.organizeImports.ruff": "explicit", // organiza imports ao salvar documento
+        }
     },
     "autopep8.args": [
         "--ignore=E501",
@@ -46,9 +50,5 @@
         "**/dist": true,
         "**/htmlcov": true,
         "**/pdm.lock": true,
-    },
-    "sonarlint.connectedMode.project": {
-        "connectionId": "nome-de-usuario-no-sonarcloud",
-        "projectKey": "nome-do-projeto-no-sonarcloud",
     },
 }
