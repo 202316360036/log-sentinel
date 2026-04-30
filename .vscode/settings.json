@@ -2,7 +2,6 @@
     // TODO: Adicionar configuracoes do Sonarcloud aqui 
     // (VEJA README.MD DA PASTA .vscode PARA MAIS DETALHES)
     "git.ignoreLimitWarning": false,
-    "python.defaultInterpreterPath": ".venv\\Scripts\\python.exe",
     "python.testing.pytestArgs": [
         "tests"
     ],

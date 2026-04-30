@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Template for Python PDM-based projects"
 authors = [{ name = "None", email = "none@domain.com" }]
 dependencies = []
-requires-python = ">=3.14"
+requires-python = ">=3.14, <4"
 readme = "README.md"
 license-files = ["LICEN[CS]E*", "README.md"]
 classifiers = ["Programming Language :: Python :: 3"]
@@ -65,12 +65,14 @@ include = [
 
 # Exclude files from analysis
 exclude = [
+    "**/node_modules",
+    ".*",
+    ".mypy_cache",
+    ".pytest_cache",
     ".venv",
     "__pycache__",
     "build",
     "dist",
-    ".mypy_cache",
-    ".pytest_cache",
 ]
 
 [tool.ruff.lint]

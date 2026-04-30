@@ -9,11 +9,11 @@ Como construir e usar:
 1. Certifique-se de que o projeto está configurado corretamente com o PDM.
 2. Instale seu pacote no ambiente virtual usando:
    ```bash
-    python -m pdm install
+    pdm install
     ```
 3. Execute o comando abaixo para rodar o pacote diretamente:
    ```bash
-   python -m pdm run python src/NOME_DO_PROJETO/__main__.py
+   pdm run python src/NOME_DO_PROJETO/__main__.py
    ```
 """
 
