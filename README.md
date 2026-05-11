@@ -18,30 +18,25 @@ Este repositório é um template para projetos Python utilizando o [PDM](https:/
 ## Configuração do ambiente
 
 1. **Instalar o PDM**:
-   - Certifique-se de que o PDM está instalado. Caso não esteja, instale-o com os seguintes comandos:
+   - Certifique-se de que o PDM está instalado. Caso não esteja, instale-o com o seguinte comando:
      ```bash
-     python -m pip install pipx
-     python -m pipx install pdm
-     python -m pipx ensurepath
-     pdm --version
+     python -m pip install pdm
      ```
 
 2. **Instalar dependências**:
    - Execute o comando abaixo para instalar as dependências do projeto:
      ```bash
-     pdm install
+     python -m pdm install
      ```
 
-3. **Feche e reabra o Visual Studio Code** para garantir que o ambiente virtual (pasta `.venv`, criada pelo PDM) seja reconhecido corretamente.
-
-4. **Adicionar novas dependências**:
+3. **Adicionar novas dependências**:
    - Para adicionar uma nova dependência ao projeto, use o comando:
      ```bash
-     pdm add nome-da-dependencia
+     python -m pdm add nome-da-dependencia
      ```
    - Para adicionar dependências de desenvolvimento (instaladas apenas no ambiente de desenvolvimento - nunca em produção), utilize:
      ```bash
-     pdm add -d nome-da-dependencia
+     python -m pdm add -d nome-da-dependencia
      ```
 
 ## Executar o projeto
@@ -49,7 +44,7 @@ Este repositório é um template para projetos Python utilizando o [PDM](https:/
 1. **Rodar o projeto**:
    - Após instalar as dependências, você pode executar o projeto diretamente usando:
      ```bash
-     pdm run python src/python_pdm_template/__main__.py
+     python -m pdm run python src/python_pdm_template/__main__.py
      ```
 
 O PDM nao apenas controla dependencias e executa o projeto, ele também pode compilar o projeto Python em arquivos `.WHL` e publicá-los no repositório oficial de pacotes do Python ([PyPi](https://pypi.org/)).
