@@ -1,6 +1,16 @@
-# python_pdm_template
+# Log Sentinel
 
-Este repositório é um template para projetos Python utilizando o [PDM](https://pdm.fming.dev/), uma ferramenta moderna de gerenciamento de pacotes e ambientes.
+[![CI](https://github.com/202316360036/log-sentinel/actions/workflows/ci.yaml/badge.svg)](https://github.com/202316360036/log-sentinel/actions/workflows/ci.yaml)
+[![Tests](https://github.com/202316360036/log-sentinel/actions/workflows/test.yaml/badge.svg)](https://github.com/202316360036/log-sentinel/actions/workflows/test.yaml)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![Coverage](https://img.shields.io/badge/coverage-80%25-brightgreen)](https://github.com/202316360036/log-sentinel)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+
+Suíte de auditoria e análise post-mortem de logs Apache. Detecta padrões de ataque (força bruta, scanner de vulnerabilidades, picos de tráfego) e gera relatórios consolidados via CLI e GUI.
+
+Projeto desenvolvido na disciplina **Engenharia de Software II** — IFBA 2026.1.
+
+Repositório baseado no template [andre-romano/python_pdm_template](https://github.com/andre-romano/python_pdm_template).
 
 ## Como usar este template
 
