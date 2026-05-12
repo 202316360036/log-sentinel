@@ -340,8 +340,7 @@
   <a href="#faq">FAQ</a>
   <a href="#cola">Cola por integrante</a>
   <a href="#quiz">Quiz</a>
-  <a href="#dicas">Dicas</a>
-  <a href="#resumo">Resumo 30s</a>
+  <a href="#resumo">Resumo</a>
 </nav>
 
 <main>
@@ -358,19 +357,19 @@
 
 <section id="glossario">
   <h2>Glossário</h2>
-  <p class="subtitle">Clique em cada termo pra expandir. Leia os termos que você não conhece de cor.</p>
+  <p class="subtitle">Clique em cada termo pra expandir. Leia os que você não conhece — entender é mais importante que memorizar.</p>
   <div class="glossary-grid" id="glossary-grid"></div>
 </section>
 
 <section id="faq">
   <h2>FAQ — Perguntas que o professor pode fazer</h2>
-  <p class="subtitle">Clique pra ver a resposta. Treina respondendo em voz alta antes.</p>
+  <p class="subtitle">Clique pra ver a resposta. Entenda o raciocínio por trás de cada uma.</p>
   <div id="faq-list"></div>
 </section>
 
 <section id="cola">
-  <h2>Cola por integrante</h2>
-  <p class="subtitle">Cada um lê só a sua aba. 2 min de leitura.</p>
+  <h2>Pontos por integrante</h2>
+  <p class="subtitle">Cada um lê a sua aba pra ter clareza do que vai falar. Foco em entender, não decorar.</p>
   <div class="tabs">
     <button class="tab active" data-tab="helena">🟪 Helena</button>
     <button class="tab" data-tab="rodrigo">🟩 Rodrigo</button>
@@ -380,7 +379,7 @@
 
   <div class="tab-content active" data-content="helena">
     <h3>Helena — GUI (abre a apresentação)</h3>
-    <h4>Palavras que você precisa saber explicar</h4>
+    <h4>Termos que você precisa entender e saber explicar</h4>
     <ul>
       <li>GUI (interface gráfica)</li>
       <li>Post-mortem (análise depois do fato)</li>
@@ -388,19 +387,17 @@
       <li>Definition of Done (critérios pra feature estar pronta)</li>
       <li>Hash MD5 (impressão digital do arquivo, prova que não foi alterado)</li>
     </ul>
-    <h4>3 pontos-chave da sua fala</h4>
+    <h4>3 ideias centrais que você defende</h4>
     <ul>
       <li>Log Sentinel = ferramenta de análise post-mortem de logs Apache, com foco em segurança</li>
       <li>Escopo recortado com critério (1 formato bem feito &gt; 4 mal feitos)</li>
       <li>Definition of Done garante que nada vira release sem qualidade</li>
     </ul>
-    <h4>Se travar na hora, fala isso</h4>
-    <div class="fallback">"O Log Sentinel ajuda quem investiga ataques em servidores. Ele lê os arquivos de log, encontra padrões suspeitos e gera um relatório."</div>
   </div>
 
   <div class="tab-content" data-content="rodrigo">
     <h3>Rodrigo — CLI (apresenta requisitos)</h3>
-    <h4>Palavras que você precisa saber explicar</h4>
+    <h4>Termos que você precisa entender e saber explicar</h4>
     <ul>
       <li>Requisito Funcional (o QUE o sistema faz)</li>
       <li>Requisito Não-Funcional (COMO o sistema faz — performance, memória, etc.)</li>
@@ -410,19 +407,17 @@
       <li>Flag (--status-code, --output)</li>
       <li>SOLID (5 princípios de design)</li>
     </ul>
-    <h4>3 pontos-chave da sua fala</h4>
+    <h4>3 ideias centrais que você defende</h4>
     <ul>
       <li>RFs definem o QUE o sistema faz (parsing, interfaces, batch, feedback)</li>
       <li>RNFs definem COMO ele faz (memória ≤ 200MB, responsivo, portátil)</li>
       <li>RNs são inegociáveis: somente leitura, fail-fast, paridade CLI=GUI</li>
     </ul>
-    <h4>Se travar na hora, fala isso</h4>
-    <div class="fallback">"Temos 5 requisitos funcionais que cobrem análise, CLI, GUI, processamento em lote e feedback. Cada um com critério mensurável. Mais 6 não-funcionais para qualidade e 3 regras de negócio inegociáveis."</div>
   </div>
 
   <div class="tab-content" data-content="aryan">
     <h3>Aryan — Core (apresenta arquitetura, TDD e testes)</h3>
-    <h4>Palavras que você precisa saber explicar</h4>
+    <h4>Termos que você precisa entender e saber explicar</h4>
     <ul>
       <li>Arquitetura em camadas</li>
       <li>5 padrões: MVC, Pipe &amp; Filter, Strategy, DAO, Factory</li>
@@ -433,19 +428,17 @@
       <li>MagicMock (objeto falso pra testes)</li>
       <li>Edge case (caso extremo)</li>
     </ul>
-    <h4>3 pontos-chave da sua fala</h4>
+    <h4>3 ideias centrais que você defende</h4>
     <ul>
       <li>Core é isolado das interfaces, usa 5 padrões de projeto clássicos</li>
       <li>TDD garante cobertura natural ≥ 80% e código testável</li>
       <li>Testamos tanto caminho feliz quanto edge cases (defeitos)</li>
     </ul>
-    <h4>Se travar na hora, fala isso</h4>
-    <div class="fallback">"O Core é o motor do sistema, com 5 padrões de projeto aplicados. Escrevemos testes ANTES do código — TDD. Usamos Mock para isolar componentes com I/O. Testamos tudo: caminho feliz e edge cases."</div>
   </div>
 
   <div class="tab-content" data-content="elder">
     <h3>Elder — CI/CD (cronograma, pipeline, métricas e fecha)</h3>
-    <h4>Palavras que você precisa saber explicar</h4>
+    <h4>Termos que você precisa entender e saber explicar</h4>
     <ul>
       <li>CI/CD (integração e entrega contínua)</li>
       <li>Pipeline (sequência de etapas automáticas)</li>
@@ -456,14 +449,12 @@
       <li>Milestone (marco do projeto)</li>
       <li>Fork (cópia de repo com vínculo)</li>
     </ul>
-    <h4>3 pontos-chave da sua fala</h4>
+    <h4>3 ideias centrais que você defende</h4>
     <ul>
       <li>Pipeline com 5 quality gates: lint, types, testes, cobertura ≥ 80%, SonarCloud</li>
       <li>Release engineering: PyInstaller pra Linux e Windows, automatizado via tag git</li>
       <li>Cronograma com 5 milestones, AV1 e AV2 já concluídos</li>
     </ul>
-    <h4>Se travar na hora, fala isso</h4>
-    <div class="fallback">"Configuramos pipeline CI/CD no GitHub Actions com 5 quality gates. Toda mudança passa por lint, type check, testes com cobertura mínima de 80%, e análise SonarCloud. Releases automatizadas via tag git."</div>
   </div>
 </section>
 
@@ -484,68 +475,11 @@
   </div>
 </section>
 
-<section id="dicas">
-  <h2>Dicas de apresentação oral</h2>
-  <p class="subtitle">Lê antes de quarta. Vale ouro.</p>
-  <div class="tips-grid">
-    <div class="tip">
-      <h4>Antes de começar a falar</h4>
-      <ul>
-        <li>Respira fundo 1 vez</li>
-        <li>Olha pra turma, sorri leve</li>
-        <li>Começa com "Boa tarde" calmo</li>
-      </ul>
-    </div>
-    <div class="tip">
-      <h4>Durante a fala</h4>
-      <ul>
-        <li>Velocidade normal de conversa</li>
-        <li>Olha pra turma, não só pro slide</li>
-        <li>Se errar uma palavra, segue. Não volta</li>
-        <li>Usa as mãos pra gesticular</li>
-      </ul>
-    </div>
-    <div class="tip">
-      <h4>Se o professor interromper</h4>
-      <ul>
-        <li>Para de falar do slide</li>
-        <li>Responde olhando pra ele</li>
-        <li>Se não souber: "essa parte é mais com o fulano"</li>
-        <li>Volta pro slide</li>
-      </ul>
-    </div>
-    <div class="tip">
-      <h4>Quem não está apresentando</h4>
-      <ul>
-        <li>Em pé ao lado de quem fala</li>
-        <li>Atento, não olhando celular</li>
-        <li>Se o tempo passa, sinal discreto</li>
-      </ul>
-    </div>
-    <div class="tip">
-      <h4>Transição entre slides</h4>
-      <ul>
-        <li>"Agora o Aryan vai falar sobre arquitetura"</li>
-        <li>Passa o controle explicitamente</li>
-        <li>Não corta a fala do outro</li>
-      </ul>
-    </div>
-    <div class="tip">
-      <h4>Final da apresentação</h4>
-      <ul>
-        <li>"Estamos abertos para perguntas"</li>
-        <li>Se silêncio, agradece e senta</li>
-        <li>Sem se desculpar por nada</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
 <section id="resumo">
-  <h2>Resumo de 30 segundos</h2>
-  <p class="subtitle">Se decorar isto, defende o projeto em qualquer pergunta básica.</p>
+  <h2>Resumo do projeto</h2>
+  <p class="subtitle">Os pontos-chave do que estamos construindo. Se entender isto, entende o projeto.</p>
   <div class="summary-box">
-    O <strong>Log Sentinel</strong> é uma ferramenta de análise <em>post-mortem</em> de logs Apache, focada em segurança. Detecta força bruta, scanners e picos de tráfego. Tem CLI e GUI compartilhando o mesmo Core, com <strong>5 padrões de projeto</strong> aplicados. Construímos com <strong>TDD</strong>, cobertura mínima de <strong>80%</strong>, pipeline <strong>CI/CD</strong> com 5 quality gates. Cronograma com 5 milestones até agosto.
+    O <strong>Log Sentinel</strong> é uma ferramenta de análise <em>post-mortem</em> de logs Apache, com foco em segurança. Detecta <strong>força bruta</strong>, <strong>scanners de vulnerabilidade</strong> e <strong>picos de tráfego</strong>. Oferece duas interfaces — <strong>CLI</strong> e <strong>GUI</strong> — que compartilham o mesmo <strong>Core</strong>, construído com <strong>5 padrões de projeto</strong> (MVC, Pipe &amp; Filter, Strategy, DAO, Factory). Desenvolvido com <strong>TDD</strong> (testes antes do código), cobertura mínima de <strong>80%</strong>, e pipeline <strong>CI/CD</strong> com 5 quality gates automáticos. Cronograma dividido em 5 milestones até agosto/2026.
   </div>
 </section>
 
