@@ -57,9 +57,9 @@ jobs:
           pdm run pytest
         shell: bash
 
-      # Análise de qualidade com SonarCloud (somente no Ubuntu)
+      # Análise de qualidade com SonarCloud (opcional - roda só se SONAR_TOKEN estiver configurado)
       - name: SonarCloud Scan
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'ubuntu-latest' && env.SONAR_TOKEN != ''
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
