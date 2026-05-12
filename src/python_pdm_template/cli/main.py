@@ -19,7 +19,3 @@ def batch(diretorio: str) -> None:
 
 if __name__ == "__main__":
     app()
-
-
-Mensagem de commit:
-feat(cli): adiciona esqueleto Typer com comandos analyze e batch
