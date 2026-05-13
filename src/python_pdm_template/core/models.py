@@ -6,6 +6,7 @@ from datetime import datetime
 @dataclass(frozen=True)
 class LogEntry:
     """Uma entrada parseada de log Apache."""
+
     ip: str
     timestamp: datetime
     method: str
