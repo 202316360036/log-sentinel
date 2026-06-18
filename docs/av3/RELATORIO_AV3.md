@@ -115,11 +115,11 @@ gh api repos/202316360036/log-sentinel/milestones --jq '.[] | {title, open_issue
 ### 6.1 Diagnóstico (revisado em 2026-06-18)
 - AV1 e AV2 estão em dia. ✅
 - AV3 (este documento): **docs prontos**, falta **demo funcional**. ⚠️
-- **A Sprint relâmpago 1.5 (11–14/06) NÃO foi cumprida**: o `git log` confirma zero commits entre 13/05 e 18/06 em Core/CLI/GUI.
+- **A Sprint 1.5 de recuperação (11–14/06) NÃO foi cumprida**: o `git log` confirma zero commits entre 13/05 e 18/06 em Core/CLI/GUI.
 - Core/CLI/GUI continuam em **esqueleto** (`LogEntry` + Typer `--help` + `MainWindow` "Em construcao").
 - **Boa notícia:** o professor adiou a AV3 de 17/06 para **08/07/2026**. A equipe ganhou 21 dias.
 
-### 6.2 Replanejamento para chegar à AV3 (Sprint relâmpago 2 — 18/06 → 06/07)
+### 6.2 Replanejamento para chegar à AV3 (Sprint pré-AV3 — 18/06 → 06/07)
 
 | Período | Foco | Responsável |
 |---------|------|-------------|

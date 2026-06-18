@@ -58,7 +58,7 @@ Roteiro detalhado fala-por-fala está em [`APRESENTACAO.md`](APRESENTACAO.md). R
 - [ ] Saber explicar **uma barreira + uma salvaguarda + uma condição latente** (B2, S6, CL-01 — conforme roteiro)
 
 ### Fazer até 06/07
-- [ ] **Sprint relâmpago 2 — Core** (18/06 → 30/06). Commits esperados na branch `feat/core-parser-detector`:
+- [ ] **Sprint pré-AV3 — Core** (18/06 → 30/06). Commits esperados na branch `feat/core-parser-detector`:
   - [ ] `feat(core): ApacheParser (Common + Combined Log Format)` + testes (até 22/06)
   - [ ] `feat(core): LogFileDAO com streaming + hash SHA-256` (até 23/06)
   - [ ] `feat(core): BruteForceDetector + fixture sample_brute_force.log` + teste (até 25/06)
@@ -78,7 +78,7 @@ Roteiro detalhado fala-por-fala está em [`APRESENTACAO.md`](APRESENTACAO.md). R
 - [ ] Saber contar a "história curta" do HZ-02 (falso positivo virando bloqueio injustificado de crawler)
 
 ### Fazer até 06/07
-- [ ] **Sprint relâmpago 2 — CLI** (22/06 → 06/07). Branch sugerida: `feat/cli-integrated`:
+- [ ] **Sprint pré-AV3 — CLI** (22/06 → 06/07). Branch sugerida: `feat/cli-integrated`:
   - [ ] `feat(cli): analyze chama ApacheParser real` (após Aryan subir parser, ~22/06)
   - [ ] `feat(cli): detect brute-force usando BruteForceDetector + saída Rich` (até 27/06)
   - [ ] `feat(cli): batch processa diretório com --output json` (até 02/07)
@@ -96,7 +96,7 @@ Roteiro detalhado fala-por-fala está em [`APRESENTACAO.md`](APRESENTACAO.md). R
 - [ ] Saber explicar o conceito de "propriedade emergente" em 1 frase
 
 ### Fazer até 06/07
-- [ ] **Sprint relâmpago 2 — GUI** (20/06 → 06/07). Branch sugerida: `feat/gui-worker`:
+- [ ] **Sprint pré-AV3 — GUI** (20/06 → 06/07). Branch sugerida: `feat/gui-worker`:
   - [ ] `feat(gui): entry point pdm run gui` no `pyproject.toml` (até 20/06) — evita o one-liner gigante na demo
   - [ ] `feat(gui): QThread worker chamando ApacheParser` (até 25/06)
   - [ ] `feat(gui): QTableView com colunas IP/timestamp/método/status` (até 26/06)
