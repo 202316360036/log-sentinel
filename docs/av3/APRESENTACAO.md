@@ -74,15 +74,15 @@ Mostrar: slide PROJETO.md (resumo).
 ### Bloco 8 — Demonstração (Aryan + Rodrigo, 3 min)
 - Aryan: terminal — `pdm run pytest` (testes verdes); mostrar `git log --oneline -10` (ritmo).
 - Rodrigo: `python -m python_pdm_template.cli.main --help` mostrando subcomandos.
-- Se até 14/06 houver `analyze` real, rodar sobre `tests/fixtures/sample_brute_force.log` e mostrar a saída.
-- Mostrar GUI (esqueleto ou versão evoluída, depende de 13/06).
-- Aceitar abertamente: "GUI ainda em construção, evolução planejada para AV4 está no Gantt atualizado".
+- Se até 06/07 (sprint pré-AV3) houver `analyze` real, rodar sobre `tests/fixtures/sample_brute_force.log` e mostrar a saída.
+- Mostrar GUI (esqueleto ou versão evoluída, depende do progresso da sprint pré-AV3).
+- Aceitar abertamente: "documentação fechada no prazo original 16/06; GUI ainda em construção, evolução planejada para AV4 está no Gantt atualizado".
 
 ### Bloco 9 — Acompanhamento (Elder, 2 min)
 - Tabela de commits por integrante.
-- Milestones: AV1 ✅, AV2 ✅, AV3 80% (docs prontos, demo parcial).
+- Milestones: AV1 100% ✅, Sprint 0 100% ✅, AV2 100% ✅, Sprint 1 (Core MVP) 17% ⚠️, AV3 docs 100% / demo em esqueleto.
 - Atualização de previsões (gráfico Gantt redesenhado).
-- **Reconhecer a lacuna** entre 13/05 e 10/06: "perdemos ritmo após a AV2; já replanejamos os próximos 5 dias para fechar Core e parte da CLI antes da apresentação."
+- **Reconhecer a lacuna** entre 13/05 e 16/06: "fechamos a documentação no prazo original; a prorrogação do professor (08/07) nos deu fôlego para entregar a demo funcional na sprint pré-AV3."
 
 ### Bloco 10 — Próximos passos (todos, ~15 s cada)
 - Aryan: "Vou finalizar parser + detector de força bruta esta semana."
@@ -111,14 +111,14 @@ Sugestão: gerar os slides em PDF a partir de Markdown (ex.: `marp` ou `pandoc`)
 
 ## 4. Plano B — se a demo não estiver pronta
 
-Se até 15/06 o Core não estiver fazendo análise real:
+Se até 06/07 o Core não estiver fazendo análise real (cenário-base hoje, 16/06):
 1. Cortar Bloco 8 para 1 min: mostra só os testes verdes + esqueletos.
 2. Aumentar Bloco 9 (acompanhamento) para 3 min explicando a lacuna e o plano de recuperação.
 3. **Não esconder.** A pauta da AV3 pede "demonstração breve do **estado atual**" — estado atual honesto é mais bem avaliado que demo fake.
 
 ---
 
-## 5. Checklist de véspera (14/06)
+## 5. Checklist de véspera (07/07)
 
 - [ ] `git pull origin master` em todas as máquinas da equipe.
 - [ ] `pdm install` rodando sem warnings.

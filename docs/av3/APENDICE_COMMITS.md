@@ -1,7 +1,8 @@
-# Apêndice — Commits por integrante (janela 08/04/2026 → 10/06/2026)
+# Apêndice — Commits por integrante (janela 08/04/2026 → 16/06/2026)
 
-> Fonte: `git log --all --no-merges --since=2026-04-01 --until=2026-06-11 --pretty=format:"%ad %an %s" --date=short`
-> Gerado em 2026-06-10. Reexecutar antes da apresentação.
+> Fonte: `git log --all --no-merges --since=2026-04-01 --until=2026-06-17 --pretty=format:"%ad %an %s" --date=short`
+> Corte: 2026-06-16 (entrega original da AV3). Conferido em 2026-06-18.
+> Resultado: zero novos commits de código entre 13/05 e 16/06 — a contagem é a mesma da revisão de 2026-06-10.
 
 ---
 
@@ -62,14 +63,28 @@
 ## Comando para regenerar este apêndice
 
 ```bash
-# Por autor
-git shortlog -sn --all --no-merges --since=2026-04-01 --until=2026-06-15
+# Por autor (corte da entrega: 16/06)
+git shortlog -sn --all --no-merges --since=2026-04-01 --until=2026-06-17
 
 # Detalhado
-git log --all --no-merges --since=2026-04-01 --until=2026-06-15 \
+git log --all --no-merges --since=2026-04-01 --until=2026-06-17 \
   --pretty=format:"%ad %an %s" --date=short
 
 # Por dia
 git log --all --no-merges --since=2026-04-01 \
   --pretty=format:"%ad %an" --date=short | sort | uniq -c
 ```
+
+## Resultado reproduzido em 2026-06-18 (corte 16/06)
+
+```
+$ git shortlog -sn --all --no-merges --since=2026-04-01 --until=2026-06-17
+     9  202316360036         (Elder Lopes)
+     8  Aryan Souza Assis
+     4  Rodrigo Cruz
+     2  Helena Santos Freitas
+     1  Andre                (template — desconsiderar)
+     1  Aryan Assis          (mesma pessoa que Aryan Souza Assis — config local diferente)
+```
+
+Total da equipe: **24 commits** (Aryan = 8 + 1 = 9). Consistente com a §3 do [RELATORIO_AV3.md](RELATORIO_AV3.md).

@@ -1,7 +1,9 @@
 # Guia da Equipe — Apresentação AV3
 
 > Engenharia de Software II (IFBA 2026.1) · Equipe Log Sentinel
-> **Apresentação: 08/07/2026** (adiada pelo professor; original era 17/06) · Prazo interno de preparação: **06/07/2026**
+> **Documentação AV3 entregue: 16/06/2026** (prazo original)
+> **Apresentação: 08/07/2026** (prorrogada pelo professor; original era 17/06)
+> Prazo interno de preparação da demo: **06/07/2026**
 > Revisão: 2026-06-18
 
 ---
