@@ -192,19 +192,19 @@ O detalhamento commit-a-commit está em `docs/av3/APENDICE_COMMITS.md`. Há uma 
 
 Dados puxados via `gh issue list --repo 202316360036/log-sentinel --state all --limit 200` com corte em 16/06/2026.
 
-No período de 8 de abril até 16 de junho, o repositório acumulou 25 issues. Destas, 12 foram fechadas até o corte e 13 permaneciam abertas. Por integrante (considerando assignee no GitHub):
+No período de 8 de abril até 16 de junho, o repositório acumulou 25 issues. Destas, 12 foram fechadas até o corte e 13 permaneciam abertas. A distribuição por integrante, considerando o assignee no GitHub, ficou conforme a tabela abaixo:
 
-| Integrante | Issues fechadas | Itens |
-|------------|----------------:|-------|
-| Elder | 8 | fork do template, badges CI, workflow PyInstaller, SonarCloud opcional, ruff D104, página HTML de estudo, migração de conteúdo, config SonarCloud |
-| Rodrigo | 2 | pacote CLI, Typer com `analyze` e `batch` |
-| Aryan | 0 | (todas as cinco issues do Core seguem abertas) |
-| Helena | 0 | (esqueleto da MainWindow e drag-and-drop seguem abertas) |
-| Marcos AV sem assignee | 2 | AV1, AV2 |
+| Integrante | Issues fechadas |
+|------------|----------------:|
+| Elder | 8 |
+| Rodrigo | 2 |
+| Aryan | 0 |
+| Helena | 0 |
+| Marcos de avaliação sem assignee | 2 |
 
-As issues ainda abertas no fechamento desta entrega cobrem o que está planejado para as próximas sprints: pelo lado do Core (Aryan), as cinco issues do MVP estão pendentes — `LogEntry` (já implementada mas a issue segue marcada), `ApacheLogParser`, `BruteForceDetector`, `ScannerDetector` e `LogFileDAO`/`ReportDAO`. Pelo lado da CLI (Rodrigo), o `analyze` real com filtros está aberto. Pelo lado da GUI (Helena), o esqueleto da MainWindow e o drag-and-drop. Pelo lado dos marcos: AV3 (será fechada após a apresentação), AV4 e AV5.
+As issues ainda abertas no fechamento desta entrega cobrem exatamente o que está planejado para as próximas sprints: do lado do Core, as cinco issues do MVP (`LogEntry` — já implementada, mas a issue segue marcada —, `ApacheLogParser`, `BruteForceDetector`, `ScannerDetector` e `LogFileDAO`/`ReportDAO`); do lado da CLI, o `analyze` real com filtros; do lado da GUI, o esqueleto da MainWindow e o drag-and-drop; e os marcos AV3 (a ser fechada após a apresentação), AV4 e AV5.
 
-Há uma discrepância que vale notar: o Aryan tem 9 commits e 0 issues fechadas. Isso indica trabalho sendo entregue sem a issue correspondente sendo marcada como resolved — é uma falha de processo que a equipe combinou corrigir na próxima sprint, fechando as issues conforme os PRs do Core forem mergeando.
+Vale observar que parte do trabalho registrado em commits não foi acompanhada do fechamento da issue correspondente. Encaramos isso como uma falha de processo da equipe — não de uma pessoa específica — e combinamos corrigir na próxima sprint, fechando cada issue conforme os PRs forem mergeando.
 
 ---
 
