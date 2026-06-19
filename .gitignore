@@ -230,3 +230,6 @@ $RECYCLE.BIN/
 *.zip
 docs/av3.rar
 "Log Sentinel - AV3 *"
+
+# Excecao: o slide oficial da AV3 (versao corrigida do Aryan) e versionado
+!docs/av3/SLIDES.pdf
