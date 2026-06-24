@@ -24,6 +24,9 @@ build-backend = "pdm.backend"
 [tool.pdm]
 distribution = true
 
+[tool.pdm.scripts]
+gui = "python -m python_pdm_template.gui.main"
+
 [tool.pdm.build]
 package-dir = "src"
 
