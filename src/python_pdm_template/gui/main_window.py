@@ -63,3 +63,20 @@ class MainWindow(QMainWindow):
         self.model.set_data(log_entries)
         self.btn_open.setEnabled(True) # Ativa o botão de novo
         self.progress_bar.setValue(100) # Deixa a barra cheia
+      def dragEnterEvent(self, event) -> None:
+        """Verifica se o brinquedo que jogaram na janela é mesmo um arquivo."""
+        # Se o que você está arrastando for um link ou arquivo do computador
+        if event.mimeData().hasUrls():
+            event.acceptProposedAction()  # A janela diz: "Gostei, pode soltar!"
+
+    def dropEvent(self, event) -> None:
+        """Pega o caminho do arquivo que foi solto e manda ler."""
+        # Pega a lista de arquivos que você soltou ali dentro
+        urls = event.mimeData().urls()
+        if urls:
+            # Pega o primeiro arquivo da lista e descobre o "endereço" dele no PC
+            file_path = urls[0].toLocalFile()
+            
+            # Só vale se for um arquivo de Log que termina com .log!
+            if file_path.endswith(".log"):
+                self.process_file(file_path)  # Manda o operário ler o arquivo!
