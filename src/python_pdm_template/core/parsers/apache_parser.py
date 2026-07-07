@@ -1,16 +1,18 @@
+"""Parser de linhas de log Apache nos formatos Common e Combined."""
+from __future__ import annotations
+
 import re
 
-# Importando o LogEntry que o documento diz que já existe. 
-# O caminho exato do import pode variar, ajuste se a sua equipe colocou em outro lugar.
 from python_pdm_template.core.models import LogEntry
 
+
 class ParseError(Exception):
-    pass
+    """Levantada quando uma linha nao casa com nenhum formato conhecido."""
+
 
 class ApacheParser:
-    """Parser para formatos Common e Combined do Apache."""
-    
-    # Expressão Regular para o Combined Log Format (mais completo)
+    """Parser para os formatos Common e Combined do Apache."""
+
     COMBINED_REGEX = re.compile(
         r'^(?P<ip>\S+) \S+ \S+ \[(?P<timestamp>[^\]]+)\] '
         r'"(?P<method>\S+) (?P<url>\S+) (?P<protocol>[^"]+)" '
@@ -18,7 +20,6 @@ class ApacheParser:
         r'"(?P<referer>[^"]*)" "(?P<user_agent>[^"]*)"$'
     )
 
-    # Expressão Regular para o Common Log Format (básico)
     COMMON_REGEX = re.compile(
         r'^(?P<ip>\S+) \S+ \S+ \[(?P<timestamp>[^\]]+)\] '
         r'"(?P<method>\S+) (?P<url>\S+) (?P<protocol>[^"]+)" '
@@ -26,29 +27,24 @@ class ApacheParser:
     )
 
     def parse_line(self, line: str, line_number: int) -> LogEntry:
-        # Tenta casar com o formato Combined primeiro (mais permissivo)
-        match = self.COMBINED_REGEX.match(line)
-        
-        # Se não casar, tenta o Common
-        if not match:
-            match = self.COMMON_REGEX.match(line)
-            
-        # Se nenhum casar, levanta o erro com a linha
+        """Converte uma linha de log em LogEntry ou levanta ParseError."""
+        line = line.rstrip("\n")
+        match = self.COMBINED_REGEX.match(line) or self.COMMON_REGEX.match(line)
         if not match:
             raise ParseError(f"Linha malformada na linha {line_number}")
-            
+
         data = match.groupdict()
-        
-        # O tamanho (size) no log do Apache pode vir como '-' quando é zero
-        size_str = data.get('size')
-        size = 0 if size_str == '-' else int(size_str)
-        
+        size_str = data.get("size") or "-"
+        size = 0 if size_str == "-" else int(size_str)
+
         return LogEntry(
-            ip=data['ip'],
-            timestamp=data['timestamp'],
-            method=data['method'],
-            status=int(data['status']),
-            # Caso não existam no Common, pegam None pelo .get()
-            referer=data.get('referer'),
-            user_agent=data.get('user_agent')
+            ip=data["ip"],
+            timestamp=data["timestamp"],
+            method=data["method"],
+            path=data["url"],
+            protocol=data["protocol"],
+            status=int(data["status"]),
+            bytes_sent=size,
+            referer=data.get("referer"),
+            user_agent=data.get("user_agent"),
         )
