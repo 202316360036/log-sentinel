@@ -10,17 +10,19 @@ from python_pdm_template.core.models import LogEntry
 class TrafficSpikeDetector:
     """Detecta pico de trafego total em janela."""
 
+    SPIKE_THRESHOLD = 100
+
     def __init__(self, window_hours: int = 1, std_dev_multiplier: int = 2) -> None:
         """Define tamanho da janela e multiplicador de desvio padrao."""
         self.window_hours = window_hours
         self.std_dev_multiplier = std_dev_multiplier
 
     def process(self, entries: Iterable[LogEntry]) -> Iterator[Detection]:
-        """Emite Detection quando o volume passa de 100 na janela atual."""
+        """Consuma entries e emita Detection ao ultrapassar SPIKE_THRESHOLD."""
         total_requests = 0
         for _ in entries:
             total_requests += 1
-            if total_requests > 100:
+            if total_requests > self.SPIKE_THRESHOLD:
                 yield Detection(
                     type="traffic_spike",
                     ip="global",

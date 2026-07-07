@@ -27,8 +27,8 @@ class ApacheParser:
     )
 
     def parse_line(self, line: str, line_number: int) -> LogEntry:
-        """Converte uma linha de log em LogEntry ou levanta ParseError."""
-        line = line.rstrip("\n")
+        """Parse a linha de log em LogEntry ou levanta ParseError."""
+        line = line.rstrip()
         match = self.COMBINED_REGEX.match(line) or self.COMMON_REGEX.match(line)
         if not match:
             raise ParseError(f"Linha malformada na linha {line_number}")
