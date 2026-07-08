@@ -13,11 +13,11 @@ class LogEntryTableModel(QAbstractTableModel):
           self._data = data or []
           self._headers = ["IP", "Timestamp", "Metodo", "Status"]
 
-      def rowCount(self, parent=None) -> int:
+      def rowCount(self, parent=None) -> int:  # noqa: N802, ARG002
           """Devolve o numero de linhas atuais."""
           return len(self._data)
 
-      def columnCount(self, parent=None) -> int:
+      def columnCount(self, parent=None) -> int:  # noqa: N802, ARG002
           """Devolve o numero de colunas fixo (4)."""
           return len(self._headers)
 
@@ -31,13 +31,13 @@ class LogEntryTableModel(QAbstractTableModel):
               return getattr(entry, "ip", "")
           if column == 1:
               return getattr(entry, "timestamp", "")
-          if column == 2:
+          if column == 2:  # noqa: PLR2004
               return getattr(entry, "method", "")
-          if column == 3:
+          if column == 3:  # noqa: PLR2004
               return str(getattr(entry, "status", ""))
           return None
 
-      def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):
+      def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):  # noqa: N802
           """Devolve o nome da coluna quando pedido pelo Qt."""
           if orientation == Qt.Orientation.Horizontal and role == Qt.ItemDataRole.DisplayRole:
               return self._headers[section]

@@ -111,12 +111,12 @@ class MainWindow(QMainWindow):
         self.proxy_model.setFilterFixedString(text)
 
     # --- [COMMIT 4] Funções de Arrastar e Soltar (Drag and Drop) ---
-    def dragEnterEvent(self, event) -> None:
+    def dragEnterEvent(self, event) -> None:  # noqa: N802
         """Verifica se o brinquedo que jogaram na janela é mesmo um arquivo."""
         if event.mimeData().hasUrls():
             event.acceptProposedAction() # A janela diz: "Gostei, pode soltar!"
 
-    def dropEvent(self, event) -> None:
+    def dropEvent(self, event) -> None:  # noqa: N802
         """Pega o caminho do arquivo que foi solto e manda ler."""
         urls = event.mimeData().urls()
         if urls:
