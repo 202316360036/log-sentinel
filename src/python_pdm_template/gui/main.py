@@ -1,5 +1,6 @@
 import sys
-from PyQt6.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication, QMainWindow, QTableView
+from PySide6.QtCore import QAbstractTableModel, Qt, QThread
 # Aqui a gente chama a janela que já existe na sua pasta!
 from python_pdm_template.gui.main_window import MainWindow
 

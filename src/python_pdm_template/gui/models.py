@@ -1,4 +1,5 @@
-from PyQt6.QtCore import QAbstractTableModel, Qt
+from PySide6.QtWidgets import QApplication, QMainWindow, QTableView
+from PySide6.QtCore import QAbstractTableModel, Qt, QThread
 
 class LogEntryTableModel(QAbstractTableModel):
     def __init__(self, data=None):
