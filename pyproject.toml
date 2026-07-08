@@ -24,6 +24,9 @@ build-backend = "pdm.backend"
 [tool.pdm]
 distribution = true
 
+[tool.pdm.scripts]
+gui = "python -m python_pdm_template.gui.main"
+
 [tool.pdm.build]
 package-dir = "src"
 
@@ -111,5 +114,3 @@ ignore=[
 [tool.ruff.lint.pydocstyle]
 convention = "pep257" # Use a convenção PEP 257 para validar as docstrings, o que inclui a validação dos parâmetros :param: e outros elementos de documentação.
 
- [tool.pdm.scripts]
-gui = "python -m python_pdm_template.gui.main"
