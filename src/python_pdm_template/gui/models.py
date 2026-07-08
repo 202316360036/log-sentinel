@@ -1,53 +1,50 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QTableView
-from PySide6.QtCore import QAbstractTableModel, Qt, QThread
+"""Modelo de tabela para exibir LogEntry na GUI."""
+from __future__ import annotations
+
+from PySide6.QtCore import QAbstractTableModel, Qt
+
 
 class LogEntryTableModel(QAbstractTableModel):
-    def __init__(self, data=None):
-        super().__init__()
-        # Se não passarem nenhuma lista, começamos com uma lista vazia
-        self._data = data or []
-        # O nome das nossas 4 colunas!
-        self._headers = ["IP", "Timestamp", "Método", "Status"]
+      """Modelo de tabela que exibe LogEntry em 4 colunas."""
 
-    def rowCount(self, parent=None):
-        # Conta quantas linhas de dados nós temos
-        return len(self._data)
+      def __init__(self, data: list | None = None) -> None:
+          """Inicializa com dados opcionais e define os cabecalhos."""
+          super().__init__()
+          self._data = data or []
+          self._headers = ["IP", "Timestamp", "Metodo", "Status"]
 
-    def columnCount(self, parent=None):
-        # Como temos 4 colunas fixas, retorna 4
-        return len(self._headers)
+      def rowCount(self, parent=None) -> int:
+          """Devolve o numero de linhas atuais."""
+          return len(self._data)
 
-    def data(self, index, role=Qt.ItemDataRole.DisplayRole):
-        # Se não for para mostrar texto na tela, não fazemos nada
-        if not index.isValid() or role != Qt.ItemDataRole.DisplayRole:
-            return None
+      def columnCount(self, parent=None) -> int:
+          """Devolve o numero de colunas fixo (4)."""
+          return len(self._headers)
 
-        # Pega a linha atual da tabela
-        log_entry = self._data[index.row()]
-        column = index.column()
+      def data(self, index, role=Qt.ItemDataRole.DisplayRole):
+          """Devolve o texto da celula pedida pelo Qt."""
+          if not index.isValid() or role != Qt.ItemDataRole.DisplayRole:
+              return None
+          entry = self._data[index.row()]
+          column = index.column()
+          if column == 0:
+              return getattr(entry, "ip", "")
+          if column == 1:
+              return getattr(entry, "timestamp", "")
+          if column == 2:
+              return getattr(entry, "method", "")
+          if column == 3:
+              return str(getattr(entry, "status", ""))
+          return None
 
-        # Dependendo da coluna, mostra um pedaço diferente do dado
-        # Nota: Aqui estamos fingindo que o LogEntry tem esses atributos. 
-        # Ajuste os nomes (.ip, .timestamp, etc.) se o ApacheParser do Aryan usar nomes diferentes!
-        if column == 0:
-            return getattr(log_entry, "ip", "")
-        elif column == 1:
-            return getattr(log_entry, "timestamp", "")
-        elif column == 2:
-            return getattr(log_entry, "method", "")
-        elif column == 3:
-            return getattr(log_entry, "status", "")
-        
-        return None
+      def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):
+          """Devolve o nome da coluna quando pedido pelo Qt."""
+          if orientation == Qt.Orientation.Horizontal and role == Qt.ItemDataRole.DisplayRole:
+              return self._headers[section]
+          return None
 
-    def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):
-        # Coloca os títulos bonitinhos ("IP", "Timestamp"...) no topo de cada coluna
-        if orientation == Qt.Orientation.Horizontal and role == Qt.ItemDataRole.DisplayRole:
-            return self._headers[section]
-        return None
-
-    def set_data(self, data):
-        # Função mágica para atualizar a tabela inteira quando o arquivo terminar de ser lido
-        self.beginResetModel()
-        self._data = data
-        self.endResetModel()
+      def set_data(self, data: list) -> None:
+          """Substitui a lista inteira e notifica a view."""
+          self.beginResetModel()
+          self._data = data
+          self.endResetModel()
