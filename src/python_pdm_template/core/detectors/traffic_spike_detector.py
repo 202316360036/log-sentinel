@@ -3,11 +3,12 @@ from __future__ import annotations
 
 from collections.abc import Iterable, Iterator
 
-from python_pdm_template.core.detectors.brute_force_detector import Detection
-from python_pdm_template.core.models import LogEntry
+from typing import override
+from python_pdm_template.core.detectors.base import BaseDetector
+from python_pdm_template.core.models import LogEntry, Detection
 
 
-class TrafficSpikeDetector:
+class TrafficSpikeDetector(BaseDetector):
     """Detecta pico de trafego total em janela."""
 
     SPIKE_THRESHOLD = 100
@@ -16,7 +17,8 @@ class TrafficSpikeDetector:
         """Define tamanho da janela e multiplicador de desvio padrao."""
         self.window_hours = window_hours
         self.std_dev_multiplier = std_dev_multiplier
-
+        
+    @override
     def process(self, entries: Iterable[LogEntry]) -> Iterator[Detection]:
         """Consuma entries e emita Detection ao ultrapassar SPIKE_THRESHOLD."""
         total_requests = 0

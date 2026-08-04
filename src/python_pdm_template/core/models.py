@@ -16,3 +16,12 @@ class LogEntry:
     bytes_sent: int
     referer: str | None = None
     user_agent: str | None = None
+
+@dataclass
+class Detection:
+    """Registro de uma deteccao emitida por um detector."""
+
+    type: str
+    ip: str
+    count: int
+    message: str

@@ -5,11 +5,13 @@ from collections import defaultdict
 from collections.abc import Iterable, Iterator
 from datetime import datetime
 
-from python_pdm_template.core.detectors.brute_force_detector import Detection
-from python_pdm_template.core.models import LogEntry
+from typing import override
+from python_pdm_template.core.detectors.base import BaseDetector
+
+from python_pdm_template.core.models import LogEntry, Detection
 
 
-class ScannerDetector:
+class ScannerDetector(BaseDetector):
     """Detecta acessos repetidos a URLs sensiveis em janela de tempo."""
 
     def __init__(self, threshold: int = 3, window_seconds: int = 60) -> None:
@@ -17,7 +19,8 @@ class ScannerDetector:
         self.threshold = threshold
         self.window_seconds = window_seconds
         self.sensitive_urls = ["/admin", "/.env", "/wp-login", "/.git"]
-
+    
+    @override
     def process(self, entries: Iterable[LogEntry]) -> Iterator[Detection]:
         """Consome LogEntries e emite Detection ao atingir o limiar."""
         history: dict[str, list[datetime]] = defaultdict(list)

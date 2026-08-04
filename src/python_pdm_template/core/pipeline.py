@@ -4,7 +4,7 @@ from __future__ import annotations
 from collections.abc import Iterator
 
 from python_pdm_template.core.dao.log_file_dao import LogFileDAO
-from python_pdm_template.core.detectors.brute_force_detector import Detection
+from python_pdm_template.core.models import Detection
 from python_pdm_template.core.parsers.apache_parser import ApacheParser
 
 
