@@ -3,30 +3,25 @@ from __future__ import annotations
 
 from collections import defaultdict
 from collections.abc import Iterable, Iterator
-from dataclasses import dataclass
+
 from datetime import datetime
 
-from python_pdm_template.core.models import LogEntry
+from python_pdm_template.core.models import LogEntry, Detection
+
+from typing import override
+from python_pdm_template.core.detectors.base import BaseDetector
 
 
-@dataclass
-class Detection:
-    """Registro de uma deteccao emitida por um detector."""
 
-    type: str
-    ip: str
-    count: int
-    message: str
-
-
-class BruteForceDetector:
+class BruteForceDetector(BaseDetector):
     """Detector de forca bruta baseado em janela deslizante."""
 
     def __init__(self, threshold: int = 10, window_seconds: int = 60) -> None:
         """Define limiar de tentativas e tamanho da janela em segundos."""
         self.threshold = threshold
         self.window_seconds = window_seconds
-
+        
+    @override                                                                
     def process(self, entries: Iterable[LogEntry]) -> Iterator[Detection]:
         """Consome LogEntries e emite Detection quando o limiar e atingido."""
         history: dict[str, list[datetime]] = defaultdict(list)
