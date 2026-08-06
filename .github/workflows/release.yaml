@@ -8,16 +8,16 @@ on:
 
 jobs:
   build:
-    name: Build executável (${{ matrix.os }})
+    name: Build executavel (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
-        python-version: ['3.12']
+        python-version: ['3.14']
 
     steps:
-      - name: Checkout do código
+      - name: Checkout do codigo
         uses: actions/checkout@v4
 
       - name: Setup Python
@@ -28,25 +28,46 @@ jobs:
       - name: Instalar PDM
         run: python -m pip install --upgrade pip pdm
 
-      - name: Instalar dependências
+      - name: Instalar dependencias
         run: pdm install --no-self
 
       - name: Instalar PyInstaller
         run: pdm add -d pyinstaller
 
-      - name: Build executável (Linux)
+      # ----- CLI -----
+      - name: Build CLI (Linux)
         if: runner.os == 'Linux'
         run: pdm run pyinstaller --onefile --name log-sentinel src/python_pdm_template/__main__.py
 
-      - name: Build executável (Windows)
+      - name: Build CLI (Windows)
         if: runner.os == 'Windows'
         run: pdm run pyinstaller --onefile --name log-sentinel.exe src/python_pdm_template/__main__.py
+
+      # ----- GUI (windowed, sem console) -----
+      - name: Build GUI (Linux)
+        if: runner.os == 'Linux'
+        run: pdm run pyinstaller --onefile --windowed --name log-sentinel-gui --collect-all PySide6 src/python_pdm_template/gui/main.py
+
+      - name: Build GUI (Windows)
+        if: runner.os == 'Windows'
+        run: pdm run pyinstaller --onefile --windowed --name log-sentinel-gui.exe --collect-all PySide6 src/python_pdm_template/gui/main.py
+
+      # ----- Smoke test do binario da CLI -----
+      - name: Smoke test CLI (Linux)
+        if: runner.os == 'Linux'
+        run: ./dist/log-sentinel analyze tests/fixtures/sample_brute_force.log
+
+      - name: Smoke test CLI (Windows)
+        if: runner.os == 'Windows'
+        run: .\dist\log-sentinel.exe analyze tests\fixtures\sample_brute_force.log
+        shell: cmd
 
       - name: Upload artefato
         uses: actions/upload-artifact@v4
         with:
           name: log-sentinel-${{ matrix.os }}
-          path: dist/log-sentinel*
+          path: |
+            dist/log-sentinel*
           retention-days: 30
 
   release:

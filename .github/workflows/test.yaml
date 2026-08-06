@@ -22,8 +22,11 @@ jobs:
 
     steps:
       # Faz o checkout do código-fonte do repositório
+      # fetch-depth: 0 é exigido pelo SonarCloud para análise de blame
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       # Instala a versão do Python definida na matriz
       - name: Set up Python ${{ matrix.python-version }}
