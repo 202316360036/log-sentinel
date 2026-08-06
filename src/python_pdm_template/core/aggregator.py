@@ -4,7 +4,7 @@ from __future__ import annotations
 from collections.abc import Iterable
 from dataclasses import dataclass, field
 
-from python_pdm_template.core.detectors.brute_force_detector import Detection
+from python_pdm_template.core.models import Detection
 
 
 @dataclass
