@@ -34,6 +34,12 @@ package-dir = "src"
 testpaths = ["tests"]
 addopts = "--cache-clear --ff --cov=src --cov-report=html --cov-report=term --cov-report=xml"
 
+[tool.coverage.run]
+omit = [
+    "*/gui/main.py",
+    "*/gui/main_window.py",
+]
+
 [tool.pyright]
 languageServer = "Pylance"   # Use Pylance como servidor de linguagem
 diagnosticMode= "workspace"     # Modo de diagnóstico para todo o workspace (em vez de apenas arquivos abertos)
