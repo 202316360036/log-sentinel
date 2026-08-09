@@ -32,7 +32,7 @@ jobs:
         run: pdm install --no-self
 
       - name: Instalar PyInstaller
-        run: pdm add -d pyinstaller setuptools
+        run: pdm run pip install "pyinstaller>=6.10" setuptools
 
       # ----- CLI -----
       - name: Build CLI (Linux)
