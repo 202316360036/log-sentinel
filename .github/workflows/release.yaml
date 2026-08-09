@@ -53,13 +53,15 @@ jobs:
         run: pdm run pyinstaller --onefile --windowed --name log-sentinel-gui.exe --collect-all PySide6 src/python_pdm_template/gui/main.py
 
       # ----- Smoke test do binario da CLI -----
+      # Usa sample.log (sem deteccao, exit 0) porque a CLI retorna 1 quando
+      # encontra qualquer anomalia - semantica estilo grep.
       - name: Smoke test CLI (Linux)
         if: runner.os == 'Linux'
-        run: ./dist/log-sentinel analyze tests/fixtures/sample_brute_force.log
+        run: ./dist/log-sentinel analyze tests/fixtures/sample.log
 
       - name: Smoke test CLI (Windows)
         if: runner.os == 'Windows'
-        run: .\dist\log-sentinel.exe analyze tests\fixtures\sample_brute_force.log
+        run: .\dist\log-sentinel.exe analyze tests\fixtures\sample.log
         shell: cmd
 
       - name: Upload artefato
