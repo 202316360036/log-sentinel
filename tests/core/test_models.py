@@ -1,6 +1,6 @@
 """Testes do modulo de modelos (TDD - RED phase)."""
 from datetime import datetime
-import pytest
+
 
 def test_log_entry_armazena_campos_obrigatorios():
     from python_pdm_template.core.models import LogEntry
