@@ -46,8 +46,12 @@ descrita a seguir, apoiada em uma matriz simples.
   linhas pode chegar sem os campos esperados pelo `ApacheParser`.
 - Mitigacao adotada: o parser levanta `ParseError` por linha invalida e a CLI
   contabiliza descartadas em vez de abortar a analise inteira.
-- Aceitabilidade: TODO Elder - confirmar ate 05/08 se a equipe aceita perder
-  ate X% de linhas descartadas ou se e preciso emitir alerta.
+- Aceitabilidade: aceitavel. A equipe convencionou tolerar ate cinco por
+  cento de linhas descartadas em silencio no relatorio, patamar
+  considerado compativel com rotacao normal e ruido de coleta manual.
+  Acima desse patamar, a CLI passa a destacar um aviso no final do
+  relatorio, mas mantem o resultado da analise; a decisao de reprocessar
+  ou nao o arquivo fica com o analista humano.
 
 ### R2 - Falha de deteccao (falso negativo) em cenarios reais
 

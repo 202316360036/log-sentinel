@@ -43,7 +43,6 @@ omit = [
     "*/gui/main.py",
     "*/gui/main_window.py",
     "*/gui/models.py",
-    "*/gui/workers.py",
 ]
 
 [tool.pyright]

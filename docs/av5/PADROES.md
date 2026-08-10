@@ -41,10 +41,25 @@ slots do Qt no papel de Observer.
   aplica um algoritmo diferente sobre a mesma sequencia de `LogEntry`. O
   Pipeline os trata pela mesma interface, escolhendo qual conjunto de
   estrategias executar por injecao no construtor.
-- Estado atual: TODO Aryan - fechar a issue #35 introduzindo `BaseDetector(ABC)`
-  em `core/detectors/base.py` com `process(entries) -> Iterator[Detection]` e
-  migrar as tres classes existentes para herdar dele. Depois, colar aqui o
-  diagrama de heranca resultante.
+- Estado atual: implementado. O pull request #38 introduziu o
+  `BaseDetector` em `src/python_pdm_template/core/detectors/base.py`,
+  contendo apenas o metodo abstrato
+  `process(entries) -> Iterator[Detection]`. As tres classes concretas
+  (`BruteForceDetector`, `ScannerDetector`, `TrafficSpikeDetector`) foram
+  migradas para herdar dessa classe. O relacionamento de heranca resultante
+  e:
+
+  ```
+  BaseDetector (ABC)
+      +-- BruteForceDetector
+      +-- ScannerDetector
+      +-- TrafficSpikeDetector
+  ```
+
+  Como consequencia arquitetural, a classe `Pipeline` passa a receber uma
+  lista tipada como `list[BaseDetector]` e nao precisa mais conhecer as
+  subclasses individualmente. Adicionar um quarto detector se resume a
+  criar uma subclasse concreta e passa-la no construtor do Pipeline.
 
 ## DAO (Data Access Object)
 
@@ -88,14 +103,25 @@ slots do Qt no papel de Observer.
   da apresentacao (`MainWindow` e a `QTableView`), com o parse rodando em uma
   `QThread` (`LogParserWorker`) que emite sinais para atualizar a interface
   sem bloquear o event loop.
-- Estado atual: TODO Helena - fechar a issue #37 e entregar para o Elder o
-  paragrafo final desta secao, citando explicitamente:
-  - Model: `LogEntryTableModel` estende `QAbstractTableModel`.
-  - View: `QTableView` na `MainWindow`.
-  - Controller: a propria `MainWindow`, que responde a acoes do usuario
-    (drag-and-drop, filtros, botoes) e coordena o worker.
-  - Observer: os sinais `progress`, `finished`, `error` do `LogParserWorker`
-    ligados a slots da `MainWindow`.
+- Estado atual: implementado. O pull request #39 fechou o mapeamento das
+  quatro responsabilidades para as classes concretas do pacote
+  `src/python_pdm_template/gui/`:
+  - **Model:** `LogEntryTableModel` estende `QAbstractTableModel` e
+    concentra o estado tabular exibido para o usuario.
+  - **View:** o widget `QTableView` da `MainWindow` renderiza o modelo.
+    Entre o modelo e a view existe ainda um `QSortFilterProxyModel`, que
+    aplica filtros por IP e por status sem alterar o `LogEntryTableModel`
+    original.
+  - **Controller:** a propria `MainWindow` responde a acoes do usuario
+    (clique em botao, drag-and-drop, alteracao dos campos de filtro) e
+    coordena o ciclo de vida do `ParserWorker`.
+  - **Observer:** o `ParserWorker`, subclasse de `QThread`, emite os
+    sinais `progress` e `finished`. A `MainWindow` inscreve slots nesses
+    sinais e reage sem que o worker precise conhecer a interface. Esse
+    e o mecanismo nativo do Qt para o padrao Observer.
+
+  A cobertura desses componentes por testes esta em `tests/gui/`, com o
+  auxilio do plugin `pytest-qt`.
 
 ## Referencias cruzadas
 
