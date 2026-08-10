@@ -45,6 +45,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pdm-python-${{ matrix.python-version }}-
 
+      # Instala libs de sistema exigidas pelo Qt em runners headless (Linux)
+      - name: Instalar libs Qt (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libegl1 libxkbcommon0 libdbus-1-3 libfontconfig1
+        shell: bash
+
       # Instala o PDM, dependências do projeto e checa integridade dos pacotes
       - name: Install Python ${{ matrix.python-version }} dependencies for ${{ matrix.os }}
         run: |
@@ -54,8 +62,11 @@ jobs:
           pdm run pip check
         shell: bash
 
-      # Executa os testes automatizados com pytest
+      # Executa os testes automatizados com pytest, forcando plataforma
+      # Qt "offscreen" em CI para nao depender de display grafico
       - name: Testing app
+        env:
+          QT_QPA_PLATFORM: offscreen
         run: |
           pdm run pytest
         shell: bash
