@@ -3,8 +3,11 @@ name = "python_pdm_template"
 version = "0.1.0"
 description = "Template for Python PDM-based projects"
 authors = [{ name = "None", email = "none@domain.com" }]
-dependencies = []
-requires-python = ">=3.14"
+dependencies = [
+    "PySide6",
+    "typer",
+]
+requires-python = ">=3.14,<3.15"
 readme = "README.md"
 license-files = ["LICEN[CS]E*", "README.md"]
 classifiers = ["Programming Language :: Python :: 3"]
@@ -15,6 +18,7 @@ dev = [
     "pytest-cov>=7.0.0",
     "pyright>=1.1.408",
     "ruff>=0.15.1",
+    "pytest-qt"
 ]
 
 [build-system]
