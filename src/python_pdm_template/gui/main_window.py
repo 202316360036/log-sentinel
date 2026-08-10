@@ -14,10 +14,6 @@ from python_pdm_template.gui.workers import ParserWorker
 class MainWindow(QMainWindow):
     """Janela principal do Log Sentinel."""
 
-  def resource_path(rel: str) -> str:
-             base = getattr(sys, "MEIPASS", str(Path(file_).parent))
-             return str(Path(base) / rel)
-
     def __init__(self) -> None:
         """Inicializa a janela principal com filtros, tabela e drag-and-drop."""
         super().__init__()
