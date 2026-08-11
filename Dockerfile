@@ -2,7 +2,10 @@
 
 # Etapa 1: builder. Instala dependencias e empacota o binario da CLI
 # com PyInstaller. Nao inclui PySide6/GUI para manter a imagem pequena.
-FROM python:3.14-slim AS builder
+# Bookworm em ambas as etapas garante o mesmo glibc. Sem essa fixacao, o
+# binario compilado com PyInstaller em uma imagem base mais nova falha
+# ao carregar libm com "GLIBC_2.38 not found" na imagem final.
+FROM python:3.14-slim-bookworm AS builder
 
 WORKDIR /build
 
@@ -12,8 +15,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN pip install --no-cache-dir --upgrade pip setuptools
 
-# Copia so o que interessa para o build da CLI.
-COPY pyproject.toml README.md ./
+# Copia so o que interessa para o build da CLI. LICENSE e exigido pela
+# validacao de license-files do backend PDM declarada no pyproject.
+COPY pyproject.toml README.md LICENSE ./
 COPY src/ ./src/
 
 # Instala em modo editable sem resolver deps declaradas no pyproject
