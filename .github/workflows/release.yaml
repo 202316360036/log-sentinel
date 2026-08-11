@@ -44,13 +44,17 @@ jobs:
         run: pdm run pyinstaller --onefile --name log-sentinel.exe src/python_pdm_template/__main__.py
 
       # ----- GUI (windowed, sem console) -----
+      # Sem --collect-all PySide6: o hook nativo do PyInstaller para
+      # PySide6 ja detecta e empacota Qt sozinho. A flag anterior emitia
+      # WARNING "PySide6 is not a package" e o binario final subia sem as
+      # libs, quebrando com ModuleNotFoundError no runtime.
       - name: Build GUI (Linux)
         if: runner.os == 'Linux'
-        run: pdm run pyinstaller --onefile --windowed --name log-sentinel-gui --collect-all PySide6 src/python_pdm_template/gui/main.py
+        run: pdm run pyinstaller --onefile --windowed --name log-sentinel-gui src/python_pdm_template/gui/main.py
 
       - name: Build GUI (Windows)
         if: runner.os == 'Windows'
-        run: pdm run pyinstaller --onefile --windowed --name log-sentinel-gui.exe --collect-all PySide6 src/python_pdm_template/gui/main.py
+        run: pdm run pyinstaller --onefile --windowed --name log-sentinel-gui.exe src/python_pdm_template/gui/main.py
 
       # ----- Smoke test do binario da CLI -----
       # Usa sample.log (sem deteccao, exit 0) porque a CLI retorna 1 quando
@@ -63,6 +67,24 @@ jobs:
         if: runner.os == 'Windows'
         run: .\dist\log-sentinel.exe analyze tests\fixtures\sample.log
         shell: cmd
+
+      # ----- Smoke test do binario da GUI (Windows) -----
+      # Levanta o binario em background, espera 3s, checa se continua
+      # vivo. Isso confirma que os imports de PySide6 funcionaram e a
+      # janela abriu. Sem esta verificacao um build quebrado como o do
+      # v0.5.0 seria publicado silenciosamente.
+      - name: Smoke test GUI (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $p = Start-Process -FilePath ".\dist\log-sentinel-gui.exe" -PassThru
+          Start-Sleep -Seconds 3
+          if ($p.HasExited) {
+            Write-Error "GUI crashou (exit $($p.ExitCode))"
+            exit 1
+          }
+          Write-Output "GUI viva, PID $($p.Id). Derrubando."
+          Stop-Process -Id $p.Id -Force
 
       - name: Upload artefato
         uses: actions/upload-artifact@v4
