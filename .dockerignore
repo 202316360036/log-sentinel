@@ -1,0 +1,40 @@
+# Arquivos e diretorios ignorados no build da imagem Docker.
+# Menos coisa vai pro contexto, mais rapido o build e menor a chance
+# de vazar arquivos locais sensiveis.
+
+.git
+.github
+.venv
+.venv/*
+.pytest_cache
+.mypy_cache
+.ruff_cache
+__pycache__
+**/__pycache__
+
+# artefatos de build local
+build
+dist
+htmlcov
+coverage.xml
+.coverage
+*.spec
+
+# ambiente de desenvolvimento
+.vscode
+.idea
+.editorconfig
+
+# documentacao e arquivos de trabalho local
+docs
+notes
+smoke
+scripts
+tests
+
+# arquivos de release ja gerados
+*.pdf
+*.pptx
+*.jpeg
+*.jpg
+*.png
